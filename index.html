@@ -2,540 +2,794 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Israel 🇮🇱</title>
+<title>ISRAEL 🇮🇱</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #020712;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 90%;
+    max-width: 1100px;
+
+    padding: 15px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(2, 7, 18, 0.65);
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 20px;
+
+    z-index: 999;
+}
+
+.logo {
+    font-weight: 900;
+    font-size: 1.3rem;
+    color: #4da3ff;
+    letter-spacing: 2px;
+}
+
+nav a {
+    color: #aaa;
+    text-decoration: none;
+    margin-left: 25px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: white;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    padding: 120px 8%;
+
+    overflow: hidden;
+}
+
+/* Netanyahu-bilde */
+
+.hero-image {
+    position: absolute;
+
+    right: 5%;
+    bottom: 0;
+
+    height: 90vh;
+    width: 50%;
+
+    object-fit: cover;
+
+    object-position: center top;
+
+    mask-image: linear-gradient(
+        to left,
+        black 40%,
+        transparent 100%
+    );
+
+    -webkit-mask-image: linear-gradient(
+        to left,
+        black 40%,
+        transparent 100%
+    );
+
+    opacity: .8;
+}
+
+/* mørkt lag over bildet */
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #020712 25%,
+            rgba(2,7,18,.75) 55%,
+            rgba(2,7,18,.15)
+        );
+
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 650px;
+}
+
+.flag {
+    font-size: 3rem;
+    margin-bottom: 20px;
+
+    animation: float 3s ease-in-out infinite;
+}
+
+.hero h1 {
+    font-size: clamp(4rem, 10vw, 9rem);
+
+    line-height: .85;
+
+    letter-spacing: -7px;
+
+    background: linear-gradient(
+        90deg,
+        white,
+        #4da3ff,
+        #ffffff
+    );
+
+    background-size: 200%;
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    color: transparent;
+
+    animation: gradient 5s infinite;
+}
+
+.hero h2 {
+    margin-top: 25px;
+
+    font-size: 1.5rem;
+
+    color: #4da3ff;
+
+    letter-spacing: 3px;
+}
+
+.hero p {
+    margin-top: 25px;
+
+    max-width: 550px;
+
+    color: #a9b5c8;
+
+    font-size: 1.1rem;
+
+    line-height: 1.8;
+}
+
+.button {
+    display: inline-block;
+
+    margin-top: 35px;
+
+    padding: 15px 25px;
+
+    background: #1477d4;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 12px;
+
+    font-weight: bold;
+
+    transition: .3s;
+}
+
+.button:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 50px rgba(20,119,212,.45);
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section {
+    width: 90%;
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 120px 0;
+}
+
+.title {
+    font-size: 3.5rem;
+
+    margin-bottom: 50px;
+
+    letter-spacing: -2px;
+}
+
+.title span {
+    color: #4da3ff;
+}
+
+/* =========================
+   NETANYAHU CARD
+========================= */
+
+.profile {
+    display: grid;
+
+    grid-template-columns: 350px 1fr;
+
+    gap: 50px;
+
+    align-items: center;
+
+    padding: 40px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(20,119,212,.15),
+            rgba(255,255,255,.03)
+        );
+
+    border: 1px solid rgba(255,255,255,.1);
+
+    border-radius: 30px;
+
+    backdrop-filter: blur(15px);
+}
+
+.profile img {
+    width: 100%;
+
+    height: 430px;
+
+    object-fit: cover;
+
+    object-position: top;
+
+    border-radius: 20px;
+
+    filter: contrast(1.05);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.5);
+}
+
+.profile h2 {
+    font-size: 3rem;
+
+    margin-bottom: 10px;
+}
+
+.profile h3 {
+    color: #4da3ff;
+
+    margin-bottom: 25px;
+}
+
+.profile p {
+    color: #9daabd;
+
+    line-height: 1.8;
+
+    margin-bottom: 15px;
+}
+
+/* =========================
+   STEDER
+========================= */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(240px, 1fr));
+
+    gap: 20px;
+}
+
+.card {
+    padding: 30px;
+
+    min-height: 240px;
+
+    background: rgba(255,255,255,.04);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 22px;
+
+    transition: .4s;
+}
+
+.card:hover {
+    transform: translateY(-12px);
+
+    border-color: #1976d2;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.5);
+}
+
+.icon {
+    font-size: 3rem;
+
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #929fb2;
+
+    line-height: 1.7;
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline {
+    border-left: 3px solid #1976d2;
+
+    padding-left: 30px;
+}
+
+.event {
+    margin-bottom: 45px;
+
+    position: relative;
+}
+
+.event::before {
+    content: "";
+
+    position: absolute;
+
+    left: -41px;
+    top: 5px;
+
+    width: 15px;
+    height: 15px;
+
+    background: #4da3ff;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 20px #4da3ff;
+}
+
+.year {
+    color: #4da3ff;
+
+    font-weight: bold;
+
+    font-size: 1.3rem;
+
+    margin-bottom: 8px;
+}
+
+.event h3 {
+    font-size: 1.6rem;
+
+    margin-bottom: 8px;
+}
+
+.event p {
+    color: #929fb2;
+
+    line-height: 1.7;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 70px 20px;
+
+    text-align: center;
+
+    border-top: 1px solid #111c2e;
+
+    color: #596577;
+}
+
+footer strong {
+    color: #4da3ff;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes float {
+
+    0%,100% {
+        transform: translateY(0);
     }
 
-    html {
-      scroll-behavior: smooth;
+    50% {
+        transform: translateY(-12px);
     }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #050b18;
-      color: white;
-      overflow-x: hidden;
+}
+
+@keyframes gradient {
+
+    0% {
+        background-position: 0%;
     }
 
-    /* Bakgrunn */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(circle at 20% 20%, #0b4ea2 0, transparent 25%),
-        radial-gradient(circle at 80% 80%, #083b78 0, transparent 25%);
-      opacity: 0.35;
-      z-index: -2;
+    50% {
+        background-position: 100%;
     }
 
-    /* NAV */
+    100% {
+        background-position: 0%;
+    }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width: 750px) {
+
     nav {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-
-      width: 90%;
-      max-width: 1000px;
-
-      padding: 15px 25px;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      background: rgba(5, 11, 24, 0.75);
-      backdrop-filter: blur(15px);
-
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 18px;
-
-      z-index: 100;
-    }
-
-    .logo {
-      font-size: 1.4rem;
-      font-weight: bold;
-      color: #4da3ff;
+        position: absolute;
     }
 
     nav a {
-      color: #ccc;
-      text-decoration: none;
-      margin-left: 25px;
-      transition: 0.3s;
+        margin-left: 8px;
+        font-size: .8rem;
     }
 
-    nav a:hover {
-      color: #4da3ff;
-    }
-
-    /* HERO */
     .hero {
-      min-height: 100vh;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      text-align: center;
-      padding: 100px 20px;
+        padding-top: 150px;
     }
 
-    .flag {
-      font-size: 6rem;
-      margin-bottom: 25px;
-
-      animation: float 3s ease-in-out infinite;
+    .hero-image {
+        right: -20%;
+        width: 90%;
+        opacity: .35;
     }
 
     .hero h1 {
-      font-size: clamp(3.5rem, 10vw, 8rem);
-      letter-spacing: -5px;
-
-      background: linear-gradient(
-        90deg,
-        #ffffff,
-        #4da3ff,
-        #ffffff
-      );
-
-      background-size: 200%;
-      background-clip: text;
-      -webkit-background-clip: text;
-
-      color: transparent;
-
-      animation: gradient 4s infinite;
+        font-size: 5rem;
     }
 
-    .hero p {
-      margin-top: 25px;
-      max-width: 650px;
-
-      color: #aeb9ca;
-      font-size: 1.2rem;
-      line-height: 1.7;
+    .profile {
+        grid-template-columns: 1fr;
     }
 
-    .button {
-      margin-top: 35px;
-
-      padding: 14px 25px;
-
-      background: #1976d2;
-      color: white;
-
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: bold;
-
-      transition: 0.3s;
-    }
-
-    .button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(25,118,210,0.4);
-    }
-
-    /* SECTIONS */
-    section {
-      width: 90%;
-      max-width: 1000px;
-      margin: auto;
-      padding: 100px 0;
+    .profile img {
+        height: 400px;
     }
 
     .title {
-      font-size: 3rem;
-      margin-bottom: 45px;
+        font-size: 2.5rem;
     }
 
-    .title span {
-      color: #4da3ff;
-    }
+}
 
-    /* KORT */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      padding: 30px;
-
-      background: rgba(255,255,255,0.05);
-
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-
-      backdrop-filter: blur(10px);
-
-      transition: 0.4s;
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-
-      border-color: #1976d2;
-
-      box-shadow:
-        0 20px 50px rgba(0,0,0,0.4);
-    }
-
-    .card-icon {
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
-
-    .card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 12px;
-    }
-
-    .card p {
-      color: #9da9bb;
-      line-height: 1.7;
-    }
-
-    /* HISTORIE */
-    .history {
-      padding: 35px;
-
-      background: rgba(255,255,255,0.04);
-
-      border-left: 4px solid #1976d2;
-      border-radius: 15px;
-    }
-
-    .history p {
-      color: #b3bdcb;
-      line-height: 1.8;
-      margin-bottom: 15px;
-    }
-
-    /* FAKTA */
-    .facts {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 15px;
-    }
-
-    .fact {
-      padding: 25px;
-      text-align: center;
-
-      background: #0b1426;
-      border-radius: 15px;
-
-      border: 1px solid #17243b;
-    }
-
-    .fact strong {
-      display: block;
-      font-size: 1.8rem;
-      color: #4da3ff;
-      margin-bottom: 8px;
-    }
-
-    .fact span {
-      color: #8996aa;
-    }
-
-    /* KONTAKT / FOOTER */
-    .contact {
-      text-align: center;
-      padding: 80px 20px;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(25,118,210,0.2),
-          transparent 65%
-        );
-
-      border-radius: 30px;
-    }
-
-    .contact h2 {
-      font-size: 3rem;
-      margin-bottom: 15px;
-    }
-
-    .contact p {
-      color: #9da9bb;
-    }
-
-    footer {
-      text-align: center;
-      padding: 50px;
-
-      color: #5d6879;
-      border-top: 1px solid #111c2e;
-    }
-
-    /* ANIMASJONER */
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-15px);
-      }
-    }
-
-    @keyframes gradient {
-      0% {
-        background-position: 0%;
-      }
-
-      50% {
-        background-position: 100%;
-      }
-
-      100% {
-        background-position: 0%;
-      }
-    }
-
-    /* MOBIL */
-    @media (max-width: 600px) {
-
-      nav {
-        position: absolute;
-      }
-
-      nav a {
-        margin-left: 10px;
-        font-size: 0.8rem;
-      }
-
-      .flag {
-        font-size: 4rem;
-      }
-
-      .title {
-        font-size: 2.2rem;
-      }
-    }
-  </style>
+</style>
 </head>
+
 
 <body>
 
-  <!-- MENY -->
-  <nav>
+
+<!-- NAV -->
+
+<nav>
 
     <div class="logo">
-      🇮🇱 ISRAEL
+        🇮🇱 ISRAEL
     </div>
 
     <div>
-      <a href="#steder">Steder</a>
-      <a href="#historie">Historie</a>
-      <a href="#fakta">Fakta</a>
+        <a href="#netanyahu">Netanyahu</a>
+        <a href="#steder">Steder</a>
+        <a href="#historie">Historie</a>
     </div>
 
-  </nav>
+</nav>
 
 
-  <!-- HERO -->
-  <header class="hero">
+<!-- HERO -->
 
-    <div class="flag">
-      🇮🇱
+<header class="hero">
+
+    <img
+        class="hero-image"
+        src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Netanyahu_official_portrait.jpg"
+        alt="Benjamin Netanyahu"
+    >
+
+    <div class="hero-content">
+
+        <div class="flag">
+            🇮🇱
+        </div>
+
+        <h1>ISRAEL</h1>
+
+        <h2>HISTORIE · KULTUR · POLITIK</h2>
+
+        <p>
+            Utforsk Israel – fra Jerusalem og Dødehavet
+            til moderne byer, historie og politikk.
+        </p>
+
+        <a href="#netanyahu" class="button">
+            Utforsk siden ↓
+        </a>
+
     </div>
 
-    <h1>ISRAEL</h1>
-
-    <p>
-      Et land med en lang historie, mange kulturer,
-      moderne byer og steder med stor religiøs og
-      historisk betydning.
-    </p>
-
-    <a href="#steder" class="button">
-      Utforsk Israel ↓
-    </a>
-
-  </header>
+</header>
 
 
-  <!-- STEDER -->
-  <section id="steder">
+<!-- NETANYAHU -->
+
+<section id="netanyahu">
 
     <h2 class="title">
-      Kjente <span>steder</span>
+        Benjamin <span>Netanyahu</span>
+    </h2>
+
+    <div class="profile">
+
+        <img
+            src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Netanyahu_official_portrait.jpg"
+            alt="Benjamin Netanyahu"
+        >
+
+        <div>
+
+            <h2>Benjamin Netanyahu</h2>
+
+            <h3>Israelsk politiker</h3>
+
+            <p>
+                Benjamin Netanyahu er en israelsk politiker
+                og leder for Likud-partiet.
+            </p>
+
+            <p>
+                Han har vært statsminister i Israel i flere
+                perioder og er en sentral og omstridt figur
+                i israelsk politikk.
+            </p>
+
+            <p>
+                Netanyahus politiske karriere har vært tett
+                knyttet til spørsmål om sikkerhet, utenrikspolitikk
+                og konflikten mellom Israel og palestinerne.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STEDER -->
+
+<section id="steder">
+
+    <h2 class="title">
+        Kjente <span>steder</span>
     </h2>
 
     <div class="cards">
 
-      <div class="card">
+        <div class="card">
 
-        <div class="card-icon">🏛️</div>
+            <div class="icon">🏛️</div>
 
-        <h3>Jerusalem</h3>
+            <h3>Jerusalem</h3>
 
-        <p>
-          En av verdens historisk og religiøst viktigste
-          byer. Byen har stor betydning for blant annet
-          jødedom, kristendom og islam.
-        </p>
+            <p>
+                En historisk by med stor religiøs betydning
+                for jødedom, kristendom og islam.
+            </p>
 
-      </div>
-
-
-      <div class="card">
-
-        <div class="card-icon">🌊</div>
-
-        <h3>Tel Aviv</h3>
-
-        <p>
-          En moderne kystby kjent for strender,
-          teknologi, restauranter og et aktivt byliv.
-        </p>
-
-      </div>
+        </div>
 
 
-      <div class="card">
+        <div class="card">
 
-        <div class="card-icon">🏜️</div>
+            <div class="icon">🌊</div>
 
-        <h3>Negevørkenen</h3>
+            <h3>Tel Aviv</h3>
 
-        <p>
-          Et stort ørkenområde i den sørlige delen
-          av landet med dramatiske landskap.
-        </p>
+            <p>
+                En moderne middelhavsby kjent for strender,
+                teknologi, restauranter og natteliv.
+            </p>
 
-      </div>
+        </div>
 
 
-      <div class="card">
+        <div class="card">
 
-        <div class="card-icon">🌊</div>
+            <div class="icon">🏜️</div>
 
-        <h3>Dødehavet</h3>
+            <h3>Negev</h3>
 
-        <p>
-          En saltsjø kjent for sitt svært salte vann
-          og for at mennesker kan flyte lett i vannet.
-        </p>
+            <p>
+                Et stort ørkenområde i den sørlige delen
+                av Israel.
+            </p>
 
-      </div>
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🌊</div>
+
+            <h3>Dødehavet</h3>
+
+            <p>
+                En svært salt innsjø hvor mennesker kan
+                flyte lett i vannet.
+            </p>
+
+        </div>
 
     </div>
 
-  </section>
+</section>
 
 
-  <!-- HISTORIE -->
-  <section id="historie">
+<!-- HISTORIE -->
+
+<section id="historie">
 
     <h2 class="title">
-      Litt om <span>historien</span>
+        Viktige <span>årstall</span>
     </h2>
 
-    <div class="history">
+    <div class="timeline">
 
-      <p>
-        Området som i dag forbindes med Israel og
-        Palestina har en svært lang og kompleks historie
-        med mange ulike folkegrupper, riker og kulturer.
-      </p>
+        <div class="event">
 
-      <p>
-        Den moderne staten Israel ble opprettet i 1948,
-        etter en periode med økende jødisk innvandring,
-        britisk mandatstyre og internasjonale planer
-        om deling av området.
-      </p>
+            <div class="year">
+                1948
+            </div>
 
-      <p>
-        Historien etter 1948 har vært preget av kriger,
-        konflikter, fredsprosesser og sterke politiske
-        og religiøse motsetninger.
-      </p>
+            <h3>Staten Israel opprettes</h3>
 
-    </div>
+            <p>
+                Israel erklærer selvstendighet 14. mai 1948.
+            </p>
 
-  </section>
+        </div>
 
 
-  <!-- FAKTA -->
-  <section id="fakta">
+        <div class="event">
 
-    <h2 class="title">
-      Israel i <span>tall</span>
-    </h2>
+            <div class="year">
+                1967
+            </div>
 
-    <div class="facts">
+            <h3>Seksdagerskrigen</h3>
 
-      <div class="fact">
-        <strong>1948</strong>
-        <span>Staten Israel opprettet</span>
-      </div>
+            <p>
+                Israel kjemper mot Egypt, Jordan og Syria
+                i en kortvarig krig.
+            </p>
 
-      <div class="fact">
-        <strong>₪</strong>
-        <span>Israelsk shekel</span>
-      </div>
-
-      <div class="fact">
-        <strong>🇮🇱</strong>
-        <span>Israelsk flagg</span>
-      </div>
-
-      <div class="fact">
-        <strong>Hebraisk</strong>
-        <span>Offisielt språk</span>
-      </div>
-
-    </div>
-
-  </section>
+        </div>
 
 
-  <!-- KONTAKT -->
-  <section>
+        <div class="event">
 
-    <div class="contact">
+            <div class="year">
+                1979
+            </div>
 
-      <h2>Israel 🇮🇱</h2>
+            <h3>Fred mellom Egypt og Israel</h3>
 
-      <p>
-        En nettside laget med HTML og CSS.
-      </p>
+            <p>
+                Egypt og Israel inngår en historisk
+                fredsavtale.
+            </p>
 
-      <a href="#" class="button">
-        Til toppen ↑
-      </a>
+        </div>
+
+
+        <div class="event">
+
+            <div class="year">
+                I dag
+            </div>
+
+            <h3>En fortsatt kompleks konflikt</h3>
+
+            <p>
+                Konflikten mellom Israel og palestinerne
+                er fortsatt et sentralt politisk spørsmål.
+            </p>
+
+        </div>
 
     </div>
 
-  </section>
+</section>
 
 
-  <footer>
-    © 2026 Israel-side · Laget med HTML & CSS
-  </footer>
+<footer>
+
+    <strong>🇮🇱 ISRAEL</strong>
+
+    <br><br>
+
+    Laget med HTML & CSS
+
+    <br><br>
+
+    Foto: Avi Ohayon / Government Press Office of Israel,
+    CC BY-SA 3.0
+
+</footer>
+
 
 </body>
 </html>
 ```
 
-Dette kan du legge direkte inn som **`index.html`** på GitHub Pages.
+Bildet jeg har brukt er det offisielle Netanyahu-portrettet fra Wikimedia Commons, og siden oppgir lisensen som **CC BY-SA 3.0**, med kreditering til Avi Ohayon / Government Press Office of Israel.
+
+Hvis du legger denne på GitHub Pages, vil bildet lastes fra Wikimedia automatisk, så du trenger ikke laste ned bildet først.
