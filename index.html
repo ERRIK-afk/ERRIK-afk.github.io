@@ -1,559 +1,277 @@
+```html
 <!doctype html>
 <html lang="no">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Min Portfolio 🇮🇱</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #eef6ff;
-      color: #14213d;
-    }
-
-    /* TOPP */
-
-    header {
-      min-height: 650px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.97),
-          rgba(226,240,255,.93)
-        );
-
-      border-top: 14px solid #0038b8;
-      border-bottom: 14px solid #0038b8;
-    }
-
-    /* Dekorative blå linjer */
-
-    header::before,
-    header::after {
-      content: "";
-      position: absolute;
-      height: 8px;
-      width: 180%;
-      background: #0038b8;
-      opacity: .08;
-      transform: rotate(-12deg);
-    }
-
-    header::before {
-      top: 20%;
-    }
-
-    header::after {
-      bottom: 15%;
-      transform: rotate(12deg);
-    }
-
-    .hero {
-      width: min(1100px, 92%);
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      align-items: center;
-      gap: 60px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-text {
-      animation: fadeIn 1s ease;
-    }
-
-    .flag {
-      font-size: 55px;
-      margin-bottom: 15px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(3rem, 8vw, 6rem);
-      line-height: .95;
-      color: #0038b8;
-      letter-spacing: -4px;
-    }
-
-    .subtitle {
-      font-size: 1.35rem;
-      margin: 25px 0;
-      color: #52627a;
-    }
-
-    .hero-button {
-      display: inline-block;
-      padding: 15px 25px;
-      background: #0038b8;
-      color: white;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: .25s;
-      box-shadow: 0 6px 0 #002875;
-    }
-
-    .hero-button:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 0 #002875;
-    }
-
-    /* NETANYAHU BILDE */
-
-    .portrait-box {
-      position: relative;
-      display: flex;
-      justify-content: center;
-    }
-
-    .portrait {
-      width: 330px;
-      height: 440px;
-      object-fit: cover;
-      object-position: top;
-
-      border-radius: 25px;
-      border: 8px solid white;
-      box-shadow:
-        0 20px 50px rgba(0, 56, 184, .25),
-        0 0 0 5px #0038b8;
-
-      transform: rotate(2deg);
-      transition: .3s;
-    }
-
-    .portrait:hover {
-      transform: rotate(0deg) scale(1.03);
-    }
-
-    .portrait-label {
-      position: absolute;
-      bottom: -20px;
-      background: #0038b8;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 12px;
-      font-weight: bold;
-      box-shadow: 0 5px 15px rgba(0,0,0,.2);
-    }
-
-    /* NAV */
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: #0038b8;
-      padding: 17px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,.15);
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      margin: 0 18px;
-      transition: .2s;
-    }
-
-    nav a:hover {
-      color: #a9d0ff;
-    }
-
-    /* INNHOLD */
-
-    main {
-      width: min(1000px, 92%);
-      margin: 60px auto;
-    }
-
-    section {
-      background: white;
-      padding: 40px;
-      margin-bottom: 35px;
-      border-radius: 22px;
-
-      border-left: 7px solid #0038b8;
-
-      box-shadow:
-        0 10px 30px rgba(0,0,0,.07);
-    }
-
-    h2 {
-      color: #0038b8;
-      font-size: 2.2rem;
-      margin-top: 0;
-    }
-
-    /* OM MEG */
-
-    .about {
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-
-    /* FERDIGHETER */
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .skill {
-      padding: 13px 20px;
-      border-radius: 30px;
-
-      color: #0038b8;
-      background: #e6f0ff;
-
-      border: 2px solid #0038b8;
-      font-weight: bold;
-
-      transition: .2s;
-    }
-
-    .skill:hover {
-      background: #0038b8;
-      color: white;
-      transform: translateY(-3px);
-    }
-
-    /* PROSJEKTER */
-
-    .projects {
-      display: grid;
-      grid-template-columns:
-        repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-
-    .project {
-      background: #f6faff;
-      border: 2px solid #d3e3f7;
-      padding: 25px;
-      border-radius: 18px;
-      transition: .25s;
-    }
-
-    .project:hover {
-      transform: translateY(-8px);
-      border-color: #0038b8;
-      box-shadow: 0 15px 30px rgba(0,56,184,.12);
-    }
-
-    .project h3 {
-      color: #0038b8;
-      font-size: 1.35rem;
-    }
-
-    .project a {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 16px;
-      background: #0038b8;
-      color: white;
-      text-decoration: none;
-      border-radius: 9px;
-      font-weight: bold;
-    }
-
-    /* KONTAKT */
-
-    .contact {
-      text-align: center;
-    }
-
-    .email {
-      display: inline-block;
-      background: #0038b8;
-      color: white;
-      padding: 15px 25px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    /* FOOTER */
-
-    footer {
-      background: #0038b8;
-      color: white;
-      text-align: center;
-      padding: 35px;
-      margin-top: 60px;
-    }
-
-    .credit {
-      font-size: .8rem;
-      opacity: .8;
-      margin-top: 15px;
-    }
-
-    /* ANIMASJON */
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* MOBIL */
-
-    @media (max-width: 750px) {
-
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 40px;
-      }
-
-      .portrait-box {
-        order: -1;
-      }
-
-      .portrait {
-        width: 250px;
-        height: 330px;
-      }
-
-      h1 {
-        letter-spacing: -2px;
-      }
-
-      nav a {
-        margin: 0 7px;
-        font-size: .9rem;
-      }
-
-      section {
-        padding: 25px;
-      }
-    }
-  </style>
+  <title>Israel 🇮🇱</title>
 </head>
 
 <body>
 
-  <!-- HERO -->
+  <!-- TOPP -->
 
   <header>
+    <h1>🇮🇱 ISRAEL</h1>
 
-    <div class="hero">
+    <p>
+      En enkel nettside om Israel
+    </p>
 
-      <div class="hero-text">
-
-        <div class="flag">🇮🇱</div>
-
-        <h1>
-          DITT<br>
-          NAVN
-        </h1>
-
-        <p class="subtitle">
-          Min personlige portfolio
-          <br>
-          Webdesign · HTML · CSS · Prosjekter
-        </p>
-
-        <a class="hero-button" href="#prosjekter">
-          Se prosjektene mine →
-        </a>
-
-      </div>
-
-
-      <div class="portrait-box">
-
-        <!--
-          Legg Netanyahu-bildet i samme mappe som index.html
-          og kall det "netanyahu.jpg"
-        -->
-
-        <img
-          class="portrait"
-          src="netanyahu.jpg"
-          alt="Benjamin Netanyahu">
-
-        <div class="portrait-label">
-          🇮🇱 Israel
-        </div>
-
-      </div>
-
-    </div>
-
+    <nav>
+      <a href="#hjem">Hjem</a> |
+      <a href="#israel">Om Israel</a> |
+      <a href="#netanyahu">Benjamin Netanyahu</a> |
+      <a href="#steder">Steder</a> |
+      <a href="#kontakt">Kontakt</a>
+    </nav>
   </header>
 
+  <hr>
 
-  <!-- NAV -->
 
-  <nav>
-    <a href="#om">Om meg</a>
-    <a href="#ferdigheter">Ferdigheter</a>
-    <a href="#prosjekter">Prosjekter</a>
-    <a href="#kontakt">Kontakt</a>
-  </nav>
-
+  <!-- HJEM -->
 
   <main>
 
-    <!-- OM MEG -->
+    <section id="hjem">
 
-    <section id="om">
+      <h2>Velkommen til Israel 🇮🇱</h2>
 
-      <h2>👋 Om meg</h2>
+      <p>
+        Velkommen til en nettside om Israel.
+        Her kan du lese litt om landet, historie,
+        kultur, kjente steder og Benjamin Netanyahu.
+      </p>
 
-      <div class="about">
+      <p>
+        Israel ligger ved Middelhavet i Midtøsten.
+      </p>
+
+      <p>
+        🇮🇱 ✡️ 🇮🇱
+      </p>
+
+    </section>
+
+    <hr>
+
+
+    <!-- OM ISRAEL -->
+
+    <section id="israel">
+
+      <h2>🇮🇱 Om Israel</h2>
+
+      <p>
+        Israel ble etablert som stat i 1948.
+        Landet ligger ved Middelhavet og grenser
+        blant annet til Libanon, Syria, Jordan og Egypt.
+      </p>
+
+      <h3>Hovedstad</h3>
+
+      <p>
+        Jerusalem regnes av Israel som landets hovedstad.
+        Byens status er samtidig omstridt internasjonalt.
+      </p>
+
+      <h3>Språk</h3>
+
+      <p>
+        Hebraisk er det viktigste offisielle språket.
+        Arabisk har en særskilt status.
+      </p>
+
+      <h3>Valuta</h3>
+
+      <p>
+        Valutaen er israelsk ny shekel (₪).
+      </p>
+
+    </section>
+
+    <hr>
+
+
+    <!-- NETANYAHU -->
+
+    <section id="netanyahu">
+
+      <h2>👤 Benjamin Netanyahu</h2>
+
+      <h3>Benjamin Netanyahu</h3>
+
+      <p>
+        Benjamin Netanyahu er en israelsk politiker
+        og leder for partiet Likud.
+      </p>
+
+      <p>
+        Han har vært statsminister i Israel i flere perioder
+        og er en av de mest kjente politikerne i Israels moderne historie.
+      </p>
+
+      <h3>Netanyahu med tekst</h3>
+
+      <pre>
+        █████████████████████████
+        █                       █
+        █   BENJAMIN NETANYAHU  █
+        █                       █
+        █       🇮🇱  ISRAEL      █
+        █                       █
+        █████████████████████████
+      </pre>
+
+      <p>
+        🇮🇱 Benjamin Netanyahu · Israelsk politiker
+      </p>
+
+    </section>
+
+    <hr>
+
+
+    <!-- STEDER -->
+
+    <section id="steder">
+
+      <h2>🌍 Kjente steder</h2>
+
+      <article>
+
+        <h3>Jerusalem</h3>
 
         <p>
-          Hei! Jeg heter <strong>DITT NAVN</strong>.
-          Dette er min personlige portfolio hvor jeg viser
-          frem hvem jeg er, hva jeg kan og prosjektene jeg har laget.
+          Jerusalem er en historisk og religiøst viktig by
+          for jødedommen, kristendommen og islam.
         </p>
+
+      </article>
+
+      <article>
+
+        <h3>Tel Aviv</h3>
 
         <p>
-          Jeg liker å jobbe med teknologi, programmering
-          og webdesign.
+          Tel Aviv er en stor by ved Middelhavet,
+          kjent for strender, kultur og moderne byliv.
         </p>
 
-      </div>
+      </article>
+
+      <article>
+
+        <h3>Dødehavet</h3>
+
+        <p>
+          Dødehavet er kjent for sitt svært salte vann
+          og ligger mellom Israel og Jordan.
+        </p>
+
+      </article>
 
     </section>
 
+    <hr>
 
-    <!-- FERDIGHETER -->
 
-    <section id="ferdigheter">
+    <!-- KULTUR -->
 
-      <h2>💻 Ferdigheter</h2>
+    <section>
 
-      <div class="skills">
+      <h2>🎵 Kultur</h2>
 
-        <div class="skill">HTML</div>
-        <div class="skill">CSS</div>
-        <div class="skill">JavaScript</div>
-        <div class="skill">GitHub</div>
-        <div class="skill">Webdesign</div>
+      <p>
+        Israel har et mangfoldig samfunn med mange
+        forskjellige kulturelle, religiøse og historiske tradisjoner.
+      </p>
 
-      </div>
+      <ul>
+        <li>Hebraisk språk</li>
+        <li>Israelsk mat</li>
+        <li>Musikk</li>
+        <li>Historie</li>
+        <li>Religion</li>
+        <li>Moderne teknologi</li>
+      </ul>
+
+    </section>
+
+    <hr>
+
+
+    <!-- FLAGGET -->
+
+    <section>
+
+      <h2>🇮🇱 Israels flagg</h2>
+
+      <p>
+        Israels flagg er hvitt med to blå horisontale striper
+        og en blå davidsstjerne i midten.
+      </p>
+
+      <p>
+        ───────────────────
+      </p>
+
+      <p>
+        ⭐ DAVIDSSTJERNEN ⭐
+      </p>
+
+      <p>
+        ───────────────────
+      </p>
 
     </section>
 
-
-    <!-- PROSJEKTER -->
-
-    <section id="prosjekter">
-
-      <h2>🚀 Mine prosjekter</h2>
-
-      <div class="projects">
-
-        <div class="project">
-
-          <h3>🌐 Prosjekt 1</h3>
-
-          <p>
-            Min første nettside laget med HTML og CSS.
-          </p>
-
-          <a href="#">
-            Se prosjekt →
-          </a>
-
-        </div>
-
-
-        <div class="project">
-
-          <h3>💻 Prosjekt 2</h3>
-
-          <p>
-            Et annet prosjekt jeg har jobbet med.
-          </p>
-
-          <a href="#">
-            Se prosjekt →
-          </a>
-
-        </div>
-
-
-        <div class="project">
-
-          <h3>🚀 Prosjekt 3</h3>
-
-          <p>
-            Mitt nyeste prosjekt.
-          </p>
-
-          <a href="#">
-            Se prosjekt →
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
+    <hr>
 
 
     <!-- KONTAKT -->
 
-    <section id="kontakt" class="contact">
+    <section id="kontakt">
 
-      <h2>📬 Kontakt meg</h2>
+      <h2>📬 Kontakt</h2>
 
       <p>
-        Har du lyst til å ta kontakt?
+        Har du spørsmål om nettsiden?
       </p>
 
-      <a
-        class="email"
-        href="mailto:epost@eksempel.no">
-        ✉️ epost@eksempel.no
-      </a>
+      <p>
+        E-post:
+        <a href="mailto:epost@eksempel.no">
+          epost@eksempel.no
+        </a>
+      </p>
 
     </section>
 
   </main>
 
 
+  <!-- FOOTER -->
+
+  <hr>
+
   <footer>
 
-    🇮🇱 DITT NAVN · Min Portfolio
+    <p>
+      🇮🇱 Israel · Informasjonsside
+    </p>
 
-    <div class="credit">
-      Netanyahu photo: Avi Ohayon / Government Press Office of Israel,
-      CC BY-SA 3.0
-    </div>
+    <p>
+      Laget med HTML
+    </p>
 
   </footer>
 
 </body>
+
 </html>
 ```
+
