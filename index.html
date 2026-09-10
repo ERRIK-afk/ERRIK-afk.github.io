@@ -1,217 +1,279 @@
-```html
 <!doctype html>
 <html lang="no">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Min SvampeBob Portfolio 🧽</title>
+  <title>Min Portfolio 🇮🇱</title>
 
   <style>
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: "Trebuchet MS", Arial, sans-serif;
-      color: #17324d;
-
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,.5) 0 4px, transparent 5px),
-        radial-gradient(circle at 80% 70%, rgba(255,255,255,.4) 0 6px, transparent 7px),
-        linear-gradient(#35c9e8, #087fc1);
-
-      background-size: 180px 180px, 240px 240px, cover;
-      min-height: 100vh;
-      overflow-x: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #eef6ff;
+      color: #14213d;
     }
 
-    /* BOBLER */
-
-    .bubble {
-      position: fixed;
-      bottom: -80px;
-      width: 30px;
-      height: 30px;
-      border: 3px solid rgba(255,255,255,.65);
-      border-radius: 50%;
-      animation: float 10s infinite ease-in;
-      z-index: -1;
-    }
-
-    .bubble:nth-child(1) {
-      left: 10%;
-      animation-delay: 1s;
-    }
-
-    .bubble:nth-child(2) {
-      left: 35%;
-      width: 20px;
-      height: 20px;
-      animation-delay: 4s;
-    }
-
-    .bubble:nth-child(3) {
-      left: 65%;
-      width: 45px;
-      height: 45px;
-      animation-delay: 2s;
-    }
-
-    .bubble:nth-child(4) {
-      left: 85%;
-      width: 25px;
-      height: 25px;
-      animation-delay: 6s;
-    }
-
-    @keyframes float {
-      from {
-        transform: translateY(0);
-        opacity: 0;
-      }
-
-      20% {
-        opacity: 1;
-      }
-
-      to {
-        transform: translateY(-110vh);
-        opacity: 0;
-      }
-    }
-
-    /* HOVEDINNHOLD */
-
-    .container {
-      width: min(900px, 92%);
-      margin: 50px auto;
-    }
+    /* TOPP */
 
     header {
-      text-align: center;
-      background: #ffe83b;
-      border: 6px solid #8b6b00;
-      border-radius: 30px;
-      padding: 35px 20px;
-      box-shadow: 0 12px 0 #064f78;
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,.97),
+          rgba(226,240,255,.93)
+        );
+
+      border-top: 14px solid #0038b8;
+      border-bottom: 14px solid #0038b8;
+    }
+
+    /* Dekorative blå linjer */
+
+    header::before,
+    header::after {
+      content: "";
+      position: absolute;
+      height: 8px;
+      width: 180%;
+      background: #0038b8;
+      opacity: .08;
+      transform: rotate(-12deg);
     }
 
     header::before {
-      content: "🍍";
-      font-size: 65px;
-      position: absolute;
-      left: 25px;
-      top: 20px;
-      transform: rotate(-10deg);
+      top: 20%;
     }
 
     header::after {
-      content: "🫧";
-      font-size: 50px;
-      position: absolute;
-      right: 30px;
-      top: 25px;
+      bottom: 15%;
+      transform: rotate(12deg);
+    }
+
+    .hero {
+      width: min(1100px, 92%);
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      align-items: center;
+      gap: 60px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-text {
+      animation: fadeIn 1s ease;
+    }
+
+    .flag {
+      font-size: 55px;
+      margin-bottom: 15px;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(2.2rem, 7vw, 4.5rem);
-      color: #e88900;
-      text-shadow:
-        3px 3px 0 white,
-        6px 6px 0 #704900;
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: .95;
+      color: #0038b8;
+      letter-spacing: -4px;
     }
 
-    header p {
-      font-size: 1.2rem;
+    .subtitle {
+      font-size: 1.35rem;
+      margin: 25px 0;
+      color: #52627a;
+    }
+
+    .hero-button {
+      display: inline-block;
+      padding: 15px 25px;
+      background: #0038b8;
+      color: white;
+      border-radius: 12px;
+      text-decoration: none;
       font-weight: bold;
+      transition: .25s;
+      box-shadow: 0 6px 0 #002875;
     }
 
-    .wave {
-      font-size: 30px;
-      margin-top: 15px;
+    .hero-button:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 0 #002875;
     }
 
-    /* SEKSJONER */
+    /* NETANYAHU BILDE */
+
+    .portrait-box {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .portrait {
+      width: 330px;
+      height: 440px;
+      object-fit: cover;
+      object-position: top;
+
+      border-radius: 25px;
+      border: 8px solid white;
+      box-shadow:
+        0 20px 50px rgba(0, 56, 184, .25),
+        0 0 0 5px #0038b8;
+
+      transform: rotate(2deg);
+      transition: .3s;
+    }
+
+    .portrait:hover {
+      transform: rotate(0deg) scale(1.03);
+    }
+
+    .portrait-label {
+      position: absolute;
+      bottom: -20px;
+      background: #0038b8;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(0,0,0,.2);
+    }
+
+    /* NAV */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: #0038b8;
+      padding: 17px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,.15);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 18px;
+      transition: .2s;
+    }
+
+    nav a:hover {
+      color: #a9d0ff;
+    }
+
+    /* INNHOLD */
+
+    main {
+      width: min(1000px, 92%);
+      margin: 60px auto;
+    }
 
     section {
-      margin-top: 40px;
-      background: rgba(255,255,255,.94);
-      padding: 30px;
-      border-radius: 25px;
-      border: 5px solid #064f78;
-      box-shadow: 0 8px 0 #043c5c;
+      background: white;
+      padding: 40px;
+      margin-bottom: 35px;
+      border-radius: 22px;
+
+      border-left: 7px solid #0038b8;
+
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.07);
     }
 
     h2 {
+      color: #0038b8;
+      font-size: 2.2rem;
       margin-top: 0;
-      font-size: 2rem;
-      color: #e58b00;
-      border-bottom: 4px dashed #35a9d6;
-      padding-bottom: 10px;
+    }
+
+    /* OM MEG */
+
+    .about {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    /* FERDIGHETER */
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill {
+      padding: 13px 20px;
+      border-radius: 30px;
+
+      color: #0038b8;
+      background: #e6f0ff;
+
+      border: 2px solid #0038b8;
+      font-weight: bold;
+
+      transition: .2s;
+    }
+
+    .skill:hover {
+      background: #0038b8;
+      color: white;
+      transform: translateY(-3px);
     }
 
     /* PROSJEKTER */
 
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns:
+        repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
     }
 
     .project {
-      background: #ffe83b;
-      border: 4px solid #9a7900;
-      border-radius: 20px;
-      padding: 20px;
+      background: #f6faff;
+      border: 2px solid #d3e3f7;
+      padding: 25px;
+      border-radius: 18px;
       transition: .25s;
-      box-shadow: 0 6px 0 #705900;
     }
 
     .project:hover {
-      transform: translateY(-8px) rotate(-1deg);
-      box-shadow: 0 12px 0 #705900;
+      transform: translateY(-8px);
+      border-color: #0038b8;
+      box-shadow: 0 15px 30px rgba(0,56,184,.12);
     }
 
     .project h3 {
-      margin-top: 0;
-      font-size: 1.4rem;
-      color: #075985;
+      color: #0038b8;
+      font-size: 1.35rem;
     }
 
     .project a {
       display: inline-block;
       margin-top: 10px;
-      padding: 10px 15px;
-      background: #ef8d00;
+      padding: 10px 16px;
+      background: #0038b8;
       color: white;
       text-decoration: none;
+      border-radius: 9px;
       font-weight: bold;
-      border-radius: 12px;
-      border: 3px solid #9b5700;
-    }
-
-    .project a:hover {
-      background: #d87300;
-    }
-
-    /* OM MEG */
-
-    .about {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-    }
-
-    .emoji {
-      font-size: 80px;
-      background: #ffe83b;
-      border-radius: 50%;
-      padding: 15px;
-      border: 4px solid #9a7900;
     }
 
     /* KONTAKT */
@@ -222,48 +284,74 @@
 
     .email {
       display: inline-block;
-      background: #075985;
+      background: #0038b8;
       color: white;
       padding: 15px 25px;
-      border-radius: 15px;
-      font-weight: bold;
+      border-radius: 12px;
       text-decoration: none;
-      border: 4px solid #043c5c;
+      font-weight: bold;
     }
 
-    .email:hover {
-      transform: scale(1.05);
-      display: inline-block;
-    }
+    /* FOOTER */
 
     footer {
-      text-align: center;
+      background: #0038b8;
       color: white;
-      font-weight: bold;
-      margin: 45px 0 20px;
-      text-shadow: 2px 2px #064f78;
+      text-align: center;
+      padding: 35px;
+      margin-top: 60px;
+    }
+
+    .credit {
+      font-size: .8rem;
+      opacity: .8;
+      margin-top: 15px;
+    }
+
+    /* ANIMASJON */
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* MOBIL */
 
-    @media (max-width: 600px) {
+    @media (max-width: 750px) {
 
-      header::before,
-      header::after {
-        display: none;
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+      }
+
+      .portrait-box {
+        order: -1;
+      }
+
+      .portrait {
+        width: 250px;
+        height: 330px;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      nav a {
+        margin: 0 7px;
+        font-size: .9rem;
       }
 
       section {
-        padding: 20px;
-      }
-
-      .about {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .emoji {
-        font-size: 60px;
+        padding: 25px;
       }
     }
   </style>
@@ -271,150 +359,201 @@
 
 <body>
 
-  <!-- Animerte bobler -->
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
+  <!-- HERO -->
 
-  <main class="container">
+  <header>
 
-    <!-- HEADER -->
-    <header>
-      <h1>Hei! 👋</h1>
+    <div class="hero">
 
-      <p>
-        Jeg heter <strong>DITT NAVN</strong>
-      </p>
+      <div class="hero-text">
 
-      <p>
-        Velkommen til min lille verden under havet! 🌊
-      </p>
+        <div class="flag">🇮🇱</div>
 
-      <div class="wave">
-        🧽 ⭐ 🐌 🍍 ⭐ 🧽
+        <h1>
+          DITT<br>
+          NAVN
+        </h1>
+
+        <p class="subtitle">
+          Min personlige portfolio
+          <br>
+          Webdesign · HTML · CSS · Prosjekter
+        </p>
+
+        <a class="hero-button" href="#prosjekter">
+          Se prosjektene mine →
+        </a>
+
       </div>
-    </header>
 
+
+      <div class="portrait-box">
+
+        <!--
+          Legg Netanyahu-bildet i samme mappe som index.html
+          og kall det "netanyahu.jpg"
+        -->
+
+        <img
+          class="portrait"
+          src="netanyahu.jpg"
+          alt="Benjamin Netanyahu">
+
+        <div class="portrait-label">
+          🇮🇱 Israel
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- NAV -->
+
+  <nav>
+    <a href="#om">Om meg</a>
+    <a href="#ferdigheter">Ferdigheter</a>
+    <a href="#prosjekter">Prosjekter</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+
+
+  <main>
 
     <!-- OM MEG -->
-    <section>
-      <h2>🧽 Om meg</h2>
+
+    <section id="om">
+
+      <h2>👋 Om meg</h2>
 
       <div class="about">
 
-        <div class="emoji">
-          🧽
-        </div>
+        <p>
+          Hei! Jeg heter <strong>DITT NAVN</strong>.
+          Dette er min personlige portfolio hvor jeg viser
+          frem hvem jeg er, hva jeg kan og prosjektene jeg har laget.
+        </p>
 
         <p>
-          Hei! Jeg er <strong>DITT NAVN</strong>.
-          Dette er min første portfolio laget med HTML og CSS.
-          Her kan du se prosjektene mine og lære litt om hva jeg holder på med.
+          Jeg liker å jobbe med teknologi, programmering
+          og webdesign.
         </p>
 
       </div>
+
+    </section>
+
+
+    <!-- FERDIGHETER -->
+
+    <section id="ferdigheter">
+
+      <h2>💻 Ferdigheter</h2>
+
+      <div class="skills">
+
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">GitHub</div>
+        <div class="skill">Webdesign</div>
+
+      </div>
+
     </section>
 
 
     <!-- PROSJEKTER -->
-    <section>
-      <h2>⭐ Mine prosjekter</h2>
+
+    <section id="prosjekter">
+
+      <h2>🚀 Mine prosjekter</h2>
 
       <div class="projects">
 
         <div class="project">
-          <h3>🍍 Prosjekt 1</h3>
+
+          <h3>🌐 Prosjekt 1</h3>
 
           <p>
-            Mitt første kule prosjekt på nettet!
+            Min første nettside laget med HTML og CSS.
           </p>
 
           <a href="#">
             Se prosjekt →
           </a>
+
         </div>
 
 
         <div class="project">
-          <h3>🦀 Prosjekt 2</h3>
+
+          <h3>💻 Prosjekt 2</h3>
 
           <p>
-            Et annet prosjekt jeg har laget.
+            Et annet prosjekt jeg har jobbet med.
           </p>
 
           <a href="#">
             Se prosjekt →
           </a>
+
         </div>
 
 
         <div class="project">
-          <h3>🐌 Prosjekt 3</h3>
+
+          <h3>🚀 Prosjekt 3</h3>
 
           <p>
-            Enda et prosjekt fra Bikini Bottom!
+            Mitt nyeste prosjekt.
           </p>
 
           <a href="#">
             Se prosjekt →
           </a>
+
         </div>
 
       </div>
+
     </section>
 
 
     <!-- KONTAKT -->
-    <section class="contact">
+
+    <section id="kontakt" class="contact">
 
       <h2>📬 Kontakt meg</h2>
 
       <p>
-        Vil du sende meg en melding?
+        Har du lyst til å ta kontakt?
       </p>
 
-      <a class="email" href="mailto:epost@eksempel.no">
+      <a
+        class="email"
+        href="mailto:epost@eksempel.no">
         ✉️ epost@eksempel.no
       </a>
 
     </section>
 
-
-    <footer>
-      🌊 Laget med HTML, CSS og litt Bikini Bottom-magi 🧽
-    </footer>
-
   </main>
+
+
+  <footer>
+
+    🇮🇱 DITT NAVN · Min Portfolio
+
+    <div class="credit">
+      Netanyahu photo: Avi Ohayon / Government Press Office of Israel,
+      CC BY-SA 3.0
+    </div>
+
+  </footer>
 
 </body>
 </html>
 ```
-
-**Det eneste du trenger å endre** er for eksempel:
-
-```html
-DITT NAVN
-```
-
-til navnet ditt, og:
-
-```html
-epost@eksempel.no
-```
-
-til e-posten din.
-
-For prosjektene kan du også bytte:
-
-```html
-<a href="#">
-```
-
-med GitHub-lenkene dine, for eksempel:
-
-```html
-<a href="https://github.com/brukernavn/prosjekt">
-```
-
-Hvis du vil, kan jeg også lage en **enda villere versjon med en stor SvampeBob på forsiden, Patrick, Squidward, Krabby Patty-knapper og bevegelige elementer**.
